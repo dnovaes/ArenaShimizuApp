@@ -1,4 +1,4 @@
-package com.example.dnovaes.arenashimizuapp.fragments;
+package dnovaes.arenashimizuapp.fragments;
 
 
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.dnovaes.arenashimizuapp.R;
+import dnovaes.arenashimizuapp.R;
 
 /**
  * Created by dnovaes on 7/16/17.

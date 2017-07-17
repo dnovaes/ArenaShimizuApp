@@ -1,13 +1,15 @@
-package com.example.dnovaes.arenashimizuapp.activities;
+package dnovaes.arenashimizuapp.activities;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.example.dnovaes.arenashimizuapp.R;
-import com.example.dnovaes.arenashimizuapp.adapters.IntroAdapter;
-import com.example.dnovaes.arenashimizuapp.interfaces.IntroPageTransformer;
+import dnovaes.arenashimizuapp.R;
+
+import dnovaes.arenashimizuapp.adapters.IntroAdapter;
+import dnovaes.arenashimizuapp.interfaces.IntroPageTransformer;
+
 
 /**
  * Created by dnovaes on 7/16/17.
@@ -24,7 +26,7 @@ public class IntroActivity extends AppCompatActivity{
         setContentView(R.layout.intro_layout);
 
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
-        //Set an adapter on the viewPager
+        //Set an adapter on the viewPager. = FragmentPagerAdapter
         mViewPager.setAdapter(new IntroAdapter(getSupportFragmentManager()));
         //Set a PageTransformer
         mViewPager.setPageTransformer(false, new IntroPageTransformer());

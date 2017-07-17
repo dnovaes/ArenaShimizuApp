@@ -1,11 +1,11 @@
-package com.example.dnovaes.arenashimizuapp.adapters;
+package dnovaes.arenashimizuapp.adapters;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.graphics.Color;
 
-import com.example.dnovaes.arenashimizuapp.fragments.IntroFragment;
+import dnovaes.arenashimizuapp.fragments.IntroFragment;
 
 /**
  * Created by dnovaes on 7/16/17.

@@ -1,9 +1,9 @@
-package com.example.dnovaes.arenashimizuapp.interfaces;
+package dnovaes.arenashimizuapp.interfaces;
 
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import com.example.dnovaes.arenashimizuapp.R;
+import dnovaes.arenashimizuapp.R;
 
 /**
  * Created by dnovaes on 7/16/17.
