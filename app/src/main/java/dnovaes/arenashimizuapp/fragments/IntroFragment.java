@@ -6,8 +6,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import dnovaes.arenashimizuapp.R;
+import dnovaes.arenashimizuapp.activities.IntroActivity;
 
 /**
  * Created by dnovaes on 7/16/17.
@@ -64,6 +67,14 @@ public class IntroFragment extends Fragment {
         // Set the current page index as the View's tag (useful in the PageTransformer)
         view.setTag(mPage);
 
+        FrameLayout frameLayout = view.findViewById(R.id.framelayout);
+
+        frameLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((IntroActivity) getActivity()).navigateToFragment(Math.abs(mPage-1));
+            }
+        });
         return view;
     }
 
