@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="sb_background">#22345c</color>
+    <color name="sb_editNumber_bg">#22345c</color>
+    <!--<color name="sb_editNumber_bg">#000000</color>-->
+    <color name="sb_editNumber_text">#cce404</color>
 </resources>
