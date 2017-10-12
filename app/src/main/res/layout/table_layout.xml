@@ -288,7 +288,8 @@
             android:paddingBottom="4dp"
             android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
-            android:layout_column="10"/>
+            android:layout_column="10"
+            android:id="@+id/total_guest"/>
     </TableRow>
 
     <TableRow
@@ -306,6 +307,11 @@
             android:textSize="30sp"
             android:text="HOME"
             android:layout_column="0"/>
+<!--        editText.setFocusable(false);
+        editText.setEnabled(false);
+        editText.setCursorVisible(false);
+        editText.setKeyListener(null);
+        editText.setBackgroundColor(Color.TRANSPARENT)-->
         <EditText
             android:id="@+id/h1"
             android:background="@color/sb_editNumber_bg"
@@ -314,6 +320,7 @@
             android:textColor="@color/sb_editNumber_text"
             android:textSize="15sp"
             android:inputType="none"
+            android:cursorVisible="false"
             android:text="0"
             android:paddingTop="15dp"
             android:paddingBottom="4dp"
@@ -418,7 +425,8 @@
             android:paddingBottom="4dp"
             android:layout_marginLeft="1dp"
             android:layout_marginRight="1dp"
-            android:layout_column="10"/>
+            android:layout_column="10"
+            android:id="@+id/total_home"/>
     </TableRow>
 
     <TableRow
@@ -431,7 +439,7 @@
         android:layout_marginTop="2dp">
 
         <Button
-            android:id="@+id/update"
+            android:id="@+id/bt_update"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="50dp"

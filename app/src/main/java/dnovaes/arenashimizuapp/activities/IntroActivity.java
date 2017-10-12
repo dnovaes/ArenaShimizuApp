@@ -50,6 +50,6 @@ public class IntroActivity extends AppCompatActivity{
 
     public void navigateToFragment(int mPage){
         mViewPager.setCurrentItem(mPage);
-        //Toast.makeText(this, "Page number: "+mViewPager.getCurrentItem(), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Page number: "+mViewPager.getCurrentItem(), Toast.LENGTH_LONG).show();
     }
 }
