@@ -10,47 +10,108 @@
 
     <TableRow
         style="@style/sb_border"
+        android:id="@+id/border_row0"
+        android:layout_width="wrap_content">
+        <TextView
+            android:background="@color/sb_background"
+            android:gravity="center"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="1dp"
+            android:textColor="#FFF"
+            android:textSize="27sp"
+            android:text="ARENA  SHIMIZU"
+            android:padding="4dip"
+            android:layout_column="0"
+            android:layout_span="11"/>
+    </TableRow>
+
+    <TableRow
+        style="@style/sb_border"
         android:id="@+id/border_row1"
         android:layout_width="wrap_content">
         <TextView
             android:background="@color/sb_background"
             android:gravity="center"
-            android:layout_marginRight="1dp"
-            android:layout_marginLeft="1dp"
+            android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="1dp"
             android:textColor="#FFF"
-            android:textSize="30dp"
+            android:textSize="27sp"
             android:text="BALL"
-            android:padding="5dip"
+            android:padding="4dip"
             android:layout_column="0"
-            android:layout_span="3"/>
+            android:layout_span="1"/>
+        <EditText
+            android:id="@+id/ball_counter"
+            android:background="@color/sb_editNumber_bg"
+            android:focusable="false"
+            android:gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="1dp"
+            android:textColor="@color/sb_editNumber_text"
+            android:textSize="27sp"
+            android:inputType="none"
+            android:text="0"
+            android:paddingTop="4dip"
+            android:paddingBottom="4dip"
+            android:layout_column="1"
+            android:layout_span="1"/>
         <TextView
             android:background="@color/sb_background"
             android:gravity="center"
-            android:layout_marginRight="1dp"
             android:layout_marginLeft="1dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="1dp"
             android:textColor="#FFF"
-            android:textSize="30dp"
+            android:textSize="27sp"
             android:text="STRIKE"
-            android:padding="5dip"
-            android:layout_column="3"
-            android:layout_span="5"/>
+            android:padding="4dip"
+            android:layout_column="2"
+            android:layout_span="4"/>
+        <EditText
+            android:id="@+id/strike_counter"
+            android:background="@color/sb_editNumber_bg"
+            android:focusable="false"
+            android:gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="1dp"
+            android:textColor="@color/sb_editNumber_text"
+            android:textSize="27sp"
+            android:inputType="none"
+            android:text="0"
+            android:paddingTop="4dip"
+            android:paddingBottom="4dip"
+            android:layout_column="6"
+            android:layout_span="2"/>
         <TextView
             android:background="@color/sb_background"
-            android:gravity="center"
-            android:layout_marginRight="1dp"
+            android:gravity="right"
             android:layout_marginLeft="1dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="1dp"
             android:textColor="#FFF"
-            android:textSize="30dp"
+            android:textSize="27sp"
             android:text="OUT"
-            android:padding="5dip"
+            android:padding="4dip"
             android:layout_column="8"
-            android:layout_span="3"/>
+            android:layout_span="2"/>
+        <EditText
+            android:id="@+id/out_counter"
+            android:background="@color/sb_editNumber_bg"
+            android:focusable="false"
+            android:gravity="center"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:textColor="@color/sb_editNumber_text"
+            android:textSize="27sp"
+            android:inputType="none"
+            android:text="0"
+            android:paddingTop="4dip"
+            android:paddingBottom="4dip"
+            android:layout_column="6"
+            android:layout_span="1"/>
     </TableRow>
 
     <TableRow
@@ -61,7 +122,7 @@
 
         <TextView
             android:background="@color/sb_background"
-            android:layout_marginLeft="1dp"
+            android:layout_marginStart="2dp"
             android:gravity="center"
             android:textColor="@color/sb_background"
             android:textSize="15dp"
@@ -169,7 +230,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:layout_marginLeft="1dp"
+            android:layout_marginStart="2dp"
             android:background="@color/sb_background"
             android:gravity="center"
             android:textColor="#FFF"
@@ -299,7 +360,7 @@
         android:layout_height="wrap_content"
         android:weightSum="1.0">
         <TextView
-            android:layout_marginLeft="1dp"
+            android:layout_marginStart="2dp"
             android:layout_marginBottom="1dp"
             android:background="@color/sb_background"
             android:gravity="center"
@@ -443,7 +504,17 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="Update"
-            android:layout_column="0" />
+            android:text="Atualizar Placar"
+            android:layout_column="0"
+            android:layout_span="2"/>
+
+        <Button
+            android:id="@+id/bt_resetCounting"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Resetar Contagem"
+            android:layout_column="2"
+            android:layout_span="5"/>
     </TableRow>
 </TableLayout>
