@@ -36,6 +36,51 @@ public class ScoreBoardActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.table_layout);
 
+        EditText ballCounter = (EditText)findViewById(R.id.ball_counter);
+        ballCounter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText et = (EditText)view;
+                Integer score = Integer.valueOf(et.getText().toString());
+                if(score < 3){
+                    score++;
+                }else{
+                    score = 0;
+                }
+                et.setText(score.toString());
+            }
+        });
+
+        EditText strikeCounter = (EditText)findViewById(R.id.strike_counter);
+        strikeCounter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText et = (EditText)view;
+                Integer score = Integer.valueOf(et.getText().toString());
+                if(score < 2){
+                    score++;
+                }else{
+                    score = 0;
+                }
+                et.setText(score.toString());
+            }
+        });
+
+        EditText outCounter = (EditText)findViewById(R.id.out_counter);
+        outCounter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText et = (EditText)view;
+                Integer score = Integer.valueOf(et.getText().toString());
+                if(score < 2){
+                    score++;
+                }else{
+                    score = 0;
+                }
+                et.setText(score.toString());
+            }
+        });
+
         Button bt = (Button)findViewById(R.id.bt_update);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,9 +92,25 @@ public class ScoreBoardActivity extends AppCompatActivity{
             }
         });
 
+        Button bt_resetCounting = (Button)findViewById(R.id.bt_resetCounting);
+        bt_resetCounting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TableRow row1 = (TableRow)findViewById(R.id.border_row1);
+
+                for (int i = 1; i < row1.getChildCount(); i++) {
+                    View v = row1.getChildAt(i);
+                    if (v instanceof EditText){
+                        EditText editText = (EditText)v;
+                        editText.setText("0");
+                    }
+                }
+            }
+        });
+
         TableLayout tableSb = (TableLayout) findViewById(R.id.scoreboardLayout);
 
-        for(int rowIndex = 0; rowIndex<tableSb.getChildCount()-1; rowIndex++){
+        for(int rowIndex = 1; rowIndex<tableSb.getChildCount()-1; rowIndex++){
 
             TableRow row = (TableRow) tableSb.getChildAt(rowIndex);
 
