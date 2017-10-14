@@ -36,9 +36,9 @@ public class IntroActivity extends AppCompatActivity{
 
         //Set an adapter on the viewPager. = FragmentPagerAdapter
         adapter = new IntroAdapter(getSupportFragmentManager());
-        adapter.addFragment(IntroFragment.newInstance(Color.parseColor("#03A9F4"), 0)); //blue
+        adapter.addFragment(IntroFragment.newInstance(Color.parseColor("#FFFFFF"), 0)); //white
         adapter.addFragment(IntroFragment.newInstance(Color.parseColor("#4CAF50"), 1)); //green
-        adapter.addFragment(IntroFragment.newInstance(Color.parseColor("#4CAF50"), 2)); //green
+        adapter.addFragment(IntroFragment.newInstance(Color.parseColor("#03A9F4"), 2)); //blue
         mViewPager.setAdapter(adapter);
 
         //Set a PageTransformer
