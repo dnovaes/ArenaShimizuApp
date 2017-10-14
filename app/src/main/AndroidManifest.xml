@@ -1,7 +1,6 @@
+<!--Created by Diego Novaes : https://github.com/dnovaes-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="dnovaes.arenashimizuapp">
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
