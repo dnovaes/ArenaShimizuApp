@@ -1,8 +1,11 @@
 package dnovaes.arenashimizuapp.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,6 +41,24 @@ public class ScoreBoardActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.table_layout);
+
+        final DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        //Yes button clicked
+                        Intent intent = getIntent();
+                        finish();
+                        startActivity(intent);
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        //No button clicked
+                        break;
+                }
+            }
+        };
 
         EditText ballCounter = (EditText)findViewById(R.id.ball_counter);
         ballCounter.setOnClickListener(new View.OnClickListener() {
@@ -123,9 +144,9 @@ public class ScoreBoardActivity extends AppCompatActivity{
         bt_resetSB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            Intent intent = getIntent();
-            finish();
-            startActivity(intent);
+            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+            builder.setMessage("Tem certeza?").setPositiveButton("Sim", dialogClickListener)
+                    .setNegativeButton("N\u00E3o", dialogClickListener).show();
             }
         });
 
@@ -220,13 +241,13 @@ public class ScoreBoardActivity extends AppCompatActivity{
                 @Override
                 public void onResponse(String response) {
                     // Display the first 500 characters of the response string.
-                    //Toast.makeText(getApplicationContext(), "Response is: "+ response.substring(0,500), Toast.LENGTH_LONG).show();
-                    Toast.makeText(getApplicationContext(), "response landed: "+response.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Placar Atualizado !", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), "Placar Atualizado !: "+response.toString(), Toast.LENGTH_LONG).show();
                 }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "That didn't work!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Erro inesperado...", Toast.LENGTH_LONG).show();
                 //Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
                 //error.printStackTrace();
             }
@@ -276,8 +297,7 @@ public class ScoreBoardActivity extends AppCompatActivity{
         };
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
-
-        Toast.makeText(getApplicationContext(), "PostData sent successfully!", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Requisiç\u00E3o enviada", Toast.LENGTH_LONG).show();
     }
 
     /** Called when the user taps the Send button */
