@@ -1,5 +1,6 @@
 package dnovaes.arenashimizuapp.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -37,6 +38,7 @@ public class IntroActivity extends AppCompatActivity{
         adapter = new IntroAdapter(getSupportFragmentManager());
         adapter.addFragment(IntroFragment.newInstance(Color.parseColor("#03A9F4"), 0)); //blue
         adapter.addFragment(IntroFragment.newInstance(Color.parseColor("#4CAF50"), 1)); //green
+        adapter.addFragment(IntroFragment.newInstance(Color.parseColor("#4CAF50"), 2)); //green
         mViewPager.setAdapter(adapter);
 
         //Set a PageTransformer
@@ -50,6 +52,10 @@ public class IntroActivity extends AppCompatActivity{
 
     public void navigateToFragment(int mPage){
         mViewPager.setCurrentItem(mPage);
-        Toast.makeText(this, "Page number: "+mViewPager.getCurrentItem(), Toast.LENGTH_LONG).show();
+        if(mPage == 2) {
+            Intent intent = new Intent(this, ScoreBoardActivity.class);
+            startActivity(intent);
+        }
+        //Toast.makeText(this, "Page number: "+mViewPager.getCurrentItem(), Toast.LENGTH_LONG).show();
     }
 }

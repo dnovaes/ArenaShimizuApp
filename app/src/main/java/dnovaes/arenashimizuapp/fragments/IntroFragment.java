@@ -72,7 +72,12 @@ public class IntroFragment extends Fragment {
         frameLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ((IntroActivity) getActivity()).navigateToFragment(Math.abs(mPage-1));
+                if(mPage<2){
+                    mPage+=1;
+                }else{
+                    mPage=0;
+                }
+                ((IntroActivity) getActivity()).navigateToFragment(mPage);
             }
         });
         return view;
