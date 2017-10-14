@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Scoreboard</string>
-    <string name="title">Scoreboard</string>
+    <string name="app_name">Placar Shimizu</string>
+    <string name="title">Placar Shimizu</string>
     <string name="introductionTitle">Arena Shimizu</string>
     <string name="desc_title">Melhor espaço de baseball da Bahia!</string>
 </resources>
