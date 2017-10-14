@@ -9,6 +9,7 @@ import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -132,7 +133,7 @@ public class ScoreBoardActivity extends AppCompatActivity{
               }
         });
 
-        Button bt_update = (Button)findViewById(R.id.bt_update);
+        ImageButton bt_update = (ImageButton) findViewById(R.id.bt_update);
         bt_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -241,7 +242,7 @@ public class ScoreBoardActivity extends AppCompatActivity{
                 @Override
                 public void onResponse(String response) {
                     // Display the first 500 characters of the response string.
-                    Toast.makeText(getApplicationContext(), "Placar Atualizado !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Placar Atualizado !", Toast.LENGTH_SHORT).show();
                     //Toast.makeText(getApplicationContext(), "Placar Atualizado !: "+response.toString(), Toast.LENGTH_LONG).show();
                 }
         }, new Response.ErrorListener() {
@@ -297,7 +298,7 @@ public class ScoreBoardActivity extends AppCompatActivity{
         };
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
-        Toast.makeText(getApplicationContext(), "Requisiç\u00E3o enviada", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Requisiç\u00E3o enviada", Toast.LENGTH_SHORT).show();
     }
 
     /** Called when the user taps the Send button */
