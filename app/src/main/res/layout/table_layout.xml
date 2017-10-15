@@ -74,6 +74,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:id="@+id/ball_title"
             android:allowUndo="false"
             android:background="@color/sb_background"
             android:gravity="center"
@@ -105,6 +106,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:id="@+id/strike_title"
             android:background="@color/sb_background"
             android:gravity="center"
             android:textColor="#FFF"
@@ -135,6 +137,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:id="@+id/out_title"
             android:background="@color/sb_background"
             android:gravity="right"
             android:textColor="#FFF"
