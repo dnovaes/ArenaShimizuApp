@@ -3,9 +3,11 @@ package dnovaes.arenashimizuapp.activities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +44,43 @@ public class ScoreBoardActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.table_layout);
+
+        /*DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int screenWidth = displayMetrics.widthPixels;
+        Toast.makeText(ScoreBoardActivity.this, Integer.valueOf(screenWidth).toString(), Toast.LENGTH_SHORT).show();*/
+
+        /*//Determine screen size
+        if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE) {
+            Toast.makeText(this, "Large screen", Toast.LENGTH_LONG).show();
+        }
+        else if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_NORMAL) {
+            Toast.makeText(this, "Normal sized screen", Toast.LENGTH_LONG).show();
+        }
+        else if ((getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_SMALL) {
+            Toast.makeText(this, "Small sized screen", Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(this, "Screen size is neither large, normal or small", Toast.LENGTH_LONG).show();
+        }
+
+        //Determine density
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int density = metrics.densityDpi;
+
+        if (density == DisplayMetrics.DENSITY_HIGH) {
+            Toast.makeText(this, "DENSITY_HIGH... Density is " + String.valueOf(density), Toast.LENGTH_LONG).show();
+        }
+        else if (density == DisplayMetrics.DENSITY_MEDIUM) {
+            Toast.makeText(this, "DENSITY_MEDIUM... Density is " + String.valueOf(density), Toast.LENGTH_LONG).show();
+        }
+        else if (density == DisplayMetrics.DENSITY_LOW) {
+            Toast.makeText(this, "DENSITY_LOW... Density is " + String.valueOf(density), Toast.LENGTH_LONG).show();
+        }
+        else {
+            Toast.makeText(this, "Density is neither HIGH, MEDIUM OR LOW.  Density is " + String.valueOf(density), Toast.LENGTH_LONG).show();
+        }*/
 
         final DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
@@ -169,7 +208,7 @@ public class ScoreBoardActivity extends AppCompatActivity{
 
         TableLayout tableSb = (TableLayout) findViewById(R.id.scoreboardLayout);
 
-        for(int rowIndex = 3; rowIndex<tableSb.getChildCount()-1; rowIndex++){
+        for(int rowIndex = 6; rowIndex<tableSb.getChildCount()-1; rowIndex++){
 
             TableRow row = (TableRow) tableSb.getChildAt(rowIndex);
 
