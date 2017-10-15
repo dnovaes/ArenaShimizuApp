@@ -106,6 +106,29 @@ public class ScoreBoardActivity extends AppCompatActivity{
             }
         };
 
+        TextView ballTitle = (TextView)findViewById(R.id.ball_title);
+        ballTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText et = (EditText)findViewById(R.id.ball_counter);
+                Integer score = Integer.valueOf(et.getText().toString());
+                if(score < 3){
+                    score++;
+                }else{
+                    score = 0;
+                }
+                et.setText(score.toString());
+            }
+        });
+        ballTitle.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                EditText editText = (EditText)findViewById(R.id.ball_counter);
+                Integer score = Integer.valueOf(0);
+                editText.setText(score.toString(), TextView.BufferType.EDITABLE);
+                return true;
+            }
+        });
         EditText ballCounter = (EditText)findViewById(R.id.ball_counter);
         ballCounter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +153,30 @@ public class ScoreBoardActivity extends AppCompatActivity{
             }
         });
 
+
+        TextView strikeTitle = (TextView)findViewById(R.id.strike_title);
+        strikeTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText et = (EditText)findViewById(R.id.strike_counter);
+                Integer score = Integer.valueOf(et.getText().toString());
+                if(score < 2){
+                    score++;
+                }else{
+                    score = 0;
+                }
+                et.setText(score.toString());
+            }
+        });
+        strikeTitle.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                EditText et = (EditText)findViewById(R.id.strike_counter);
+                Integer score = Integer.valueOf(0);
+                et.setText(score.toString(), TextView.BufferType.EDITABLE);
+                return true;
+            }
+        });
         EditText strikeCounter = (EditText)findViewById(R.id.strike_counter);
         strikeCounter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,6 +201,30 @@ public class ScoreBoardActivity extends AppCompatActivity{
             }
         });
 
+
+        TextView outTitle = (TextView)findViewById(R.id.out_title);
+        outTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText et = (EditText)findViewById(R.id.out_counter);
+                Integer score = Integer.valueOf(et.getText().toString());
+                if(score < 2){
+                    score++;
+                }else{
+                    score = 0;
+                }
+                et.setText(score.toString());
+            }
+        });
+        outTitle.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                EditText et = (EditText)findViewById(R.id.out_counter);
+                Integer score = Integer.valueOf(0);
+                et.setText(score.toString(), TextView.BufferType.EDITABLE);
+                return true;
+            }
+        });
         EditText outCounter = (EditText)findViewById(R.id.out_counter);
         outCounter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -294,8 +365,8 @@ public class ScoreBoardActivity extends AppCompatActivity{
                             int jsonFail = jObject.getInt("fail");
                             Toast.makeText(getApplicationContext(), "Error: #Fail" + String.valueOf(jsonFail), Toast.LENGTH_LONG).show();
                         }else if(!jObject.isNull("ok")){
-                            int jsonOk = jObject.getInt("ok");
-                            Toast.makeText(getApplicationContext(), "Placar Atualizado!" + String.valueOf(jsonOk), Toast.LENGTH_SHORT).show();
+                            //int jsonOk = jObject.getInt("ok");
+                            Toast.makeText(getApplicationContext(), "Placar Atualizado!", Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         // Oops
