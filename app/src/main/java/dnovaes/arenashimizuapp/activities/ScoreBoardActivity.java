@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,6 +26,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +43,8 @@ import dnovaes.arenashimizuapp.adapters.IntroAdapter;
 public class ScoreBoardActivity extends AppCompatActivity{
 
     private IntroAdapter adapter;
+    static final int GUEST_ROW_INDEX = 6;
+    static final int HOME_ROW_INDEX = 7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -208,7 +214,7 @@ public class ScoreBoardActivity extends AppCompatActivity{
 
         TableLayout tableSb = (TableLayout) findViewById(R.id.scoreboardLayout);
 
-        for(int rowIndex = 6; rowIndex<tableSb.getChildCount()-1; rowIndex++){
+        for(int rowIndex = GUEST_ROW_INDEX; rowIndex<tableSb.getChildCount()-1; rowIndex++){
 
             TableRow row = (TableRow) tableSb.getChildAt(rowIndex);
 
@@ -281,8 +287,21 @@ public class ScoreBoardActivity extends AppCompatActivity{
                 @Override
                 public void onResponse(String response) {
                     // Display the first 500 characters of the response string.
-                    Toast.makeText(getApplicationContext(), "Placar Atualizado !", Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(getApplicationContext(), "Placar Atualizado !: "+response.toString(), Toast.LENGTH_LONG).show();
+                    try {
+                        JSONObject jObject = new JSONObject(response);
+                        //boolean aJsonBoolean = jObject.getBoolean("fail");
+                        if(!jObject.isNull("fail")) {
+                            int jsonFail = jObject.getInt("fail");
+                            Toast.makeText(getApplicationContext(), "Error: #Fail" + String.valueOf(jsonFail), Toast.LENGTH_LONG).show();
+                        }else if(!jObject.isNull("ok")){
+                            int jsonOk = jObject.getInt("ok");
+                            Toast.makeText(getApplicationContext(), "Placar Atualizado!" + String.valueOf(jsonOk), Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        // Oops
+                        Toast.makeText(getApplicationContext(), "Erro inesperado com JSON: "+e.toString(), Toast.LENGTH_LONG).show();
+                    }
+
                 }
         }, new Response.ErrorListener() {
             @Override
@@ -307,24 +326,26 @@ public class ScoreBoardActivity extends AppCompatActivity{
 
                 TableLayout tableSb = (TableLayout) findViewById(R.id.scoreboardLayout);
 
-                for(int rowIndex = 3; rowIndex<tableSb.getChildCount()-1; rowIndex++) {
-                    //rowINdex : 3 => GUEST / 4 => HOME
+                for(int rowIndex = GUEST_ROW_INDEX; rowIndex<tableSb.getChildCount()-1; rowIndex++) {
+
                     TableRow row = (TableRow) tableSb.getChildAt(rowIndex);
 
-                    for (int i = 1; i < row.getChildCount() - 1; i++) {
+                    //row.getChildCount() - 2 => last two cells : blank column and total value
+                    for (int i = 2; i < row.getChildCount() - 2; i++) {
 
                         View v = row.getChildAt(i);
 
                         if (v instanceof EditText) {
                             EditText editText = (EditText)v;
-                            if(rowIndex == 3){ // guest row
-                                params.put("g"+i, editText.getText().toString());
-                            }else if(rowIndex == 4){ //home row
-                                params.put("h"+i, editText.getText().toString());
+                            if(rowIndex == GUEST_ROW_INDEX){ // guest row
+                                params.put("g"+(i-1), editText.getText().toString());
+                            }else if(rowIndex == HOME_ROW_INDEX){ //home row
+                                params.put("h"+(i-1), editText.getText().toString());
                             }
                         }
                     }
                 }
+                Log.d("DEBUG", params.toString());
                 return params;
             }
 
