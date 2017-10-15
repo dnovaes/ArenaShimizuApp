@@ -3,12 +3,14 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/intro_background"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <FrameLayout
         android:id="@+id/framelayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
 
         <!--<TextView
             android:id="@+id/title"
@@ -28,8 +30,7 @@
             android:layout_width="594dp"
             android:layout_height="360dp"
             android:layout_gravity="center"
-            android:src="@mipmap/img_48dp" />
-
+            android:src="@drawable/shimizudct_logo"/>
     </FrameLayout>
 
 </FrameLayout>
