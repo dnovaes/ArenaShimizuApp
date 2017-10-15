@@ -3,342 +3,538 @@
     android:id="@+id/scoreboardLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:stretchColumns="*"
     android:background="@color/sb_background">
-    <!--android:background="@drawable/sb_background"-->
+    <!--android:stretchColumns="2,3,4,5,6,7,8,9,10, 12"-->
+    <!--OBs: Do not stretch 'blank' columns-->
 
+    <!--blank row-->
     <TableRow
-        style="@style/sb_border"
-        android:id="@+id/border_row0"
-        android:layout_width="wrap_content">
-        <TextView
-            android:background="@color/sb_background"
-            android:gravity="center"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginRight="1dp"
-            android:textColor="#FFF"
-            android:textSize="27sp"
-            android:text="ARENA  SHIMIZU"
-            android:padding="4dip"
-            android:layout_column="0"
-            android:layout_span="11"/>
+        android:background="#FFFFFF"
+        android:layout_width="match_parent">
+        <TextView android:layout_height="1dp"/>
     </TableRow>
 
+
     <TableRow
         style="@style/sb_border"
-        android:id="@+id/border_row1"
-        android:layout_width="wrap_content">
+        android:layout_width="match_parent"
+        android:id="@+id/border_row0"
+        android:weightSum="18.2">
+        <!--blank column-->
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight=".1"/>
+            <!--android:layout_column="0"
+            android:layout_span="1"/>-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:background="@color/sb_background"
             android:gravity="center"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="1dp"
             android:textColor="#FFF"
             android:textSize="27sp"
+            android:text="@string/arena_shimizu"
+            android:layout_weight="18"/>
+            <!--android:layout_column="1"
+            android:layout_span="12"/>-->
+        <!--blank column-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight=".1"/>
+            <!--android:layout_column="12"
+            android:layout_span="1"/>-->
+    </TableRow>
+
+
+    <!--blank row-->
+    <TableRow
+        android:background="#FFFFFF"
+        android:layout_width="match_parent">
+        <TextView android:layout_height="1dp"/>
+    </TableRow>
+
+
+    <TableRow
+        style="@style/sb_border"
+        android:layout_width="match_parent"
+        android:id="@+id/border_row1"
+        android:weightSum="18.4">
+
+        <!--blank column-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight=".1"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:allowUndo="false"
+            android:background="@color/sb_background"
+            android:gravity="center"
             android:text="BALL"
-            android:padding="4dip"
-            android:layout_column="0"
-            android:layout_span="1"/>
+            android:textColor="#FFFFFF"
+            android:textSize="27sp"
+            android:layout_weight="4"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:id="@+id/ball_counter"
             android:background="@color/sb_editNumber_bg"
             android:focusable="false"
             android:inputType="none"
             android:cursorVisible="false"
             android:gravity="center"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="1dp"
             android:textColor="@color/sb_editNumber_text"
             android:textSize="27sp"
             android:text="0"
-            android:paddingTop="4dip"
-            android:paddingBottom="4dip"
-            android:layout_column="1"
-            android:layout_span="1"/>
+            android:layout_weight="2"/>
+
+        <!--blank column-->
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight=".1"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:background="@color/sb_background"
             android:gravity="center"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="1dp"
             android:textColor="#FFF"
             android:textSize="27sp"
             android:text="STRIKE"
-            android:padding="4dip"
-            android:layout_column="2"
-            android:layout_span="4"/>
+            android:layout_weight="5"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:id="@+id/strike_counter"
             android:background="@color/sb_editNumber_bg"
             android:focusable="false"
             android:inputType="none"
             android:cursorVisible="false"
             android:gravity="center"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="1dp"
             android:textColor="@color/sb_editNumber_text"
             android:textSize="27sp"
             android:text="0"
-            android:paddingTop="4dip"
-            android:paddingBottom="4dip"
-            android:layout_column="6"
-            android:layout_span="2"/>
+            android:layout_weight="2"/>
+
+        <!--blank column-->
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight=".1"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:background="@color/sb_background"
             android:gravity="right"
-            android:layout_marginLeft="1dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="1dp"
             android:textColor="#FFF"
             android:textSize="27sp"
             android:text="OUT"
-            android:padding="4dip"
-            android:layout_column="8"
-            android:layout_span="2"/>
+            android:layout_weight="3"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:id="@+id/out_counter"
             android:background="@color/sb_editNumber_bg"
             android:focusable="false"
             android:inputType="none"
             android:cursorVisible="false"
             android:gravity="center"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="1dp"
-            android:layout_marginRight="1dp"
             android:textColor="@color/sb_editNumber_text"
             android:textSize="27sp"
             android:text="0"
-            android:paddingTop="4dip"
-            android:paddingBottom="4dip"
-            android:layout_column="6"
-            android:layout_span="1"/>
+            android:layout_weight="2"/>
+
+        <!--blank column-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight=".1"/>
     </TableRow>
+
+
+    <!--blank row-->
+    <TableRow
+        android:background="#FFFFFF"
+        android:layout_width="match_parent">
+        <TextView android:layout_height="1dp"/>
+    </TableRow>
+
 
     <TableRow
         style="@style/sb_border"
         android:id="@+id/border_row2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:weightSum="15.3">
 
+        <!--blank column-->
         <TextView
-            android:layout_marginStart="2dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight=".1"/>
+
+        <!-- blank space start of innnings -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:background="@color/sb_background"
             android:gravity="center"
             android:textColor="@color/sb_background"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:text="0"
-            android:paddingTop="11dp"
-            android:paddingBottom="3dp"
-            android:layout_column="0"/>
+            android:layout_weight="3"/>
+
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_inning_number"
             android:text="1"
-            android:layout_column="1"/>
+            android:layout_weight="1"/>
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_inning_number"
             android:text="2"
-            android:layout_column="2"/>
+            android:layout_weight="1"/>
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_inning_number"
             android:text="3"
-            android:layout_column="3"/>
+            android:layout_weight="1"/>
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_inning_number"
             android:text="4"
-            android:layout_column="4"/>
+            android:layout_weight="1"/>
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_inning_number"
             android:text="5"
-            android:layout_column="5"/>
+            android:layout_weight="1"/>
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_inning_number"
             android:text="6"
-            android:layout_column="6"/>
+            android:layout_weight="1"/>
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_inning_number"
             android:text="7"
-            android:layout_column="7"/>
+            android:layout_weight="1"/>
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_inning_number"
             android:text="8"
-            android:layout_column="8"/>
+            android:layout_weight="1"/>
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_inning_number"
             android:text="9"
-            android:layout_column="9"/>
+            android:layout_weight="1"/>
+
+        <!--blank column-->
         <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight=".1"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:background="@color/sb_background"
             android:gravity="center"
             android:textColor="#FFF"
-            android:textSize="21dp"
+            android:textSize="21sp"
             android:text="TOTAL"
-            android:layout_marginLeft="1dp"
-            android:layout_marginRight="1dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="2dp"
-            android:layout_column="10"/>
+            android:layout_weight="3"/>
+
+        <!--blank column-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight=".1"/>
     </TableRow>
 
     <TableRow
         style="@style/sb_border"
         android:id="@+id/border_row3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:weightSum="15.3">
+
+        <!--blank column-->
         <TextView
-            android:layout_marginStart="2dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight=".1"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:background="@color/sb_background"
             android:gravity="center"
             android:textColor="#FFF"
             android:textSize="30sp"
+            android:paddingLeft="4dp"
             android:text="GUEST"
-            android:layout_column="0"/>
+            android:layout_weight="3"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="1"
-            />
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="2"/>
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="3"/>
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="4"/>
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="5"/>
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="6"/>
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="7"/>
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="8"/>
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="9"/>
+            android:layout_weight="1"/>
+
+        <!--blank column-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight=".1"/>
+
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_marginLeft="1dp"
-            android:layout_marginRight="1dp"
-            android:layout_column="10"
-            android:id="@+id/total_guest"/>
+            android:id="@+id/total_guest"
+            android:layout_weight="3"/>
+
+        <!--blank column-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight=".1"/>
     </TableRow>
+
 
     <TableRow
         style="@style/sb_border"
         android:id="@+id/border_row4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:weightSum="15.3">
+
+        <!--blank column-->
         <TextView
-            android:layout_marginStart="2dp"
-            android:layout_marginBottom="1dp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight=".1"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:background="@color/sb_background"
             android:gravity="center"
             android:textColor="#FFF"
             android:textSize="30sp"
             android:text="HOME"
-            android:layout_column="0"/>
-<!--        editText.setFocusable(false);
-        editText.setEnabled(false);
-        editText.setCursorVisible(false);
-        editText.setKeyListener(null);
-        editText.setBackgroundColor(Color.TRANSPARENT)-->
+            android:layout_weight="3"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="1"/>
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="2"/>
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="3"/>
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="4"/>
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="5"/>
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="6"/>
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="7"/>
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="8"/>
+            android:layout_weight="1"/>
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_column="9"/>
+            android:layout_weight="1"/>
+
+        <!--blank column-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight=".1"/>
+
         <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             style="@style/sb_editText"
             android:text="0"
-            android:layout_marginLeft="1dp"
-            android:layout_marginRight="1dp"
-            android:layout_column="10"
-            android:id="@+id/total_home"/>
+            android:id="@+id/total_home"
+            android:layout_weight="3"/>
+
+        <!--blank column-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:layout_weight=".1"/>
+
     </TableRow>
+
+
+    <!--blank row-->
+    <TableRow
+        android:background="#FFFFFF"
+        android:layout_width="match_parent">
+        <TextView android:layout_height="1dp"/>
+    </TableRow>
+
 
     <TableRow
         style="@style/sb_border"
         android:id="@+id/border_row5"
-        android:background="@color/sb_background"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1.0"
-        android:layout_marginTop="2dp">
+        android:background="@color/sb_background">
 
-        <Button
-            android:id="@+id/bt_update"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Atualizar Placar"
-            android:layout_column="0"
-            android:layout_span="2"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="2dp"
+            android:layout_weight=".5">
+            <ImageButton
+                android:id="@+id/bt_update"
+                android:gravity="center"
+                android:background="@drawable/ib_update"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:padding="8dp"/>
+        </RelativeLayout>
+
+        <!--blank column-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/sb_background"
+            android:layout_weight="5"/>
 
         <Button
             android:id="@+id/bt_resetCounting"
             android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:textSize="13sp"
             android:text="Resetar Contagem"
-            android:layout_column="3"
-            android:layout_span="5"/>
+            android:textColor="@color/sb_background"
+            android:layout_weight="2"/>
 
         <Button
             android:id="@+id/bt_resetScoreboard"
             android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="0dp"
+            android:layout_height="55dp"
+            android:textSize="13sp"
             android:text="Resetar Placar"
-            android:layout_column="8"
-            android:layout_span="3"/>
+            android:textColor="@color/sb_background"
+            android:layout_weight="2"/>
     </TableRow>
+
 </TableLayout>
