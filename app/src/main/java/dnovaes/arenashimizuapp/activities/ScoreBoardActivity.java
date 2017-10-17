@@ -283,13 +283,14 @@ public class ScoreBoardActivity extends AppCompatActivity{
             }
         });
 
+        // add click and longclick listeners for the guestRow and homeRow
         TableLayout tableSb = (TableLayout) findViewById(R.id.scoreboardLayout);
 
         for(int rowIndex = GUEST_ROW_INDEX; rowIndex<tableSb.getChildCount()-1; rowIndex++){
 
             TableRow row = (TableRow) tableSb.getChildAt(rowIndex);
 
-            for (int i = 1; i < row.getChildCount()-1; i++) {
+            for (int i = 2; i < row.getChildCount()-3; i++) {
 
                 View v = row.getChildAt(i);
                 if (v instanceof EditText){
