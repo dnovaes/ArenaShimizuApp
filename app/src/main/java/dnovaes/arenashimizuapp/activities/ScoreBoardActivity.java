@@ -347,8 +347,8 @@ public class ScoreBoardActivity extends AppCompatActivity{
 
     public void postData() {
         // Create a new HttpClient and Post Header
-        //String url = "http://192.168.25.240:3000/scoreBoard/update";
-        String url = "http://bobito-cc.umbler.net/scoreBoard/update";
+        String url = "http://https://bobito.herokuapp.com/scoreBoard/update";
+        //String url = "http://bobito-cc.umbler.net/scoreBoard/update";
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
