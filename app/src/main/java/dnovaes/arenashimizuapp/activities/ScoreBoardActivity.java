@@ -347,7 +347,11 @@ public class ScoreBoardActivity extends AppCompatActivity{
 
     public void postData() {
         // Create a new HttpClient and Post Header
+<<<<<<< HEAD
         String url = "https://bobito.herokuapp.com/scoreBoard/update";
+=======
+        String url = "http://https://bobito.herokuapp.com/scoreBoard/update";
+>>>>>>> edd99615a109a8349c8f54419fa015c46f014805
         //String url = "http://bobito-cc.umbler.net/scoreBoard/update";
 
         // Instantiate the RequestQueue.
