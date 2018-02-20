@@ -345,10 +345,15 @@ public class ScoreBoardActivity extends AppCompatActivity{
         }
     }
 
+    public void onResume(){
+        //after all listeners are set. Execute a GET request to server to get current values of scoreBoard
+        super.onResume();
+        getScoreBoardValues();
+    }
+
     public void postData() {
         // Create a new HttpClient and Post Header
         String url = "https://bobito.herokuapp.com/scoreBoard/update";
-        //String url = "http://bobito-cc.umbler.net/scoreBoard/update";
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
@@ -431,6 +436,140 @@ public class ScoreBoardActivity extends AppCompatActivity{
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
         Toast.makeText(getApplicationContext(), "Requisiç\u00E3o enviada", Toast.LENGTH_SHORT).show();
+    }
+
+    public void getScoreBoardValues() {
+        // Create a new HttpClient and Post Header
+        String url = "https://bobito.herokuapp.com/scoreBoard/get";
+
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                // Display the first 500 characters of the response string.
+                try {
+                    JSONObject jObject = new JSONObject(response);
+                    //boolean aJsonBoolean = jObject.getBoolean("fail");
+
+                    Log.d("DEBUG", jObject.toString());
+
+                    EditText et = (EditText)findViewById(R.id.ball_counter);
+                    Integer value = Integer.valueOf(jObject.getString("b"));
+                    et.setText(value.toString(), TextView.BufferType.EDITABLE);
+
+                    et = (EditText)findViewById(R.id.strike_counter);
+                    value = Integer.valueOf(jObject.getString("s"));
+                    et.setText(value.toString(), TextView.BufferType.EDITABLE);
+
+                    et = (EditText)findViewById(R.id.out_counter);
+                    value = Integer.valueOf(jObject.getString("o"));
+                    et.setText(value.toString(), TextView.BufferType.EDITABLE);
+
+                    TableLayout tableSb = (TableLayout) findViewById(R.id.scoreboardLayout);
+                    Integer guestScore = 0;
+                    Integer homeScore = 0;
+
+                    for(int rowIndex = GUEST_ROW_INDEX; rowIndex<tableSb.getChildCount()-1; rowIndex++) {
+
+                        TableRow row = (TableRow) tableSb.getChildAt(rowIndex);
+
+                        //row.getChildCount() - 2 => last two cells : blank column and total value
+                        for (int i = 2; i < row.getChildCount() - 2; i++) {
+
+                            View v = row.getChildAt(i);
+
+                            if (v instanceof EditText) {
+                                EditText editText = (EditText)v;
+                                if(rowIndex == GUEST_ROW_INDEX){ // guest row
+                                    value = Integer.valueOf(jObject.getString("g"+(i-1)));
+                                    guestScore = guestScore + value;
+                                    editText.setText(value.toString(), TextView.BufferType.EDITABLE);
+
+                                }else if(rowIndex == HOME_ROW_INDEX){ //home row
+                                    value = Integer.valueOf(jObject.getString("h"+(i-1)));
+                                    homeScore = homeScore + value;
+                                    editText.setText(value.toString(), TextView.BufferType.EDITABLE);
+                                }
+                            }
+                        }
+                    }
+
+                    et = (EditText)findViewById(R.id.total_guest);
+                    et.setText(guestScore.toString(), TextView.BufferType.EDITABLE);
+
+                    et = (EditText)findViewById(R.id.total_home);
+                    et.setText(homeScore.toString(), TextView.BufferType.EDITABLE);
+
+                    Toast.makeText(getApplicationContext(), "Valores do app atualizados.", Toast.LENGTH_SHORT).show();
+                } catch (JSONException e) {
+                    // Oops
+                    Toast.makeText(getApplicationContext(), "Erro inesperado com JSON: "+e.toString(), Toast.LENGTH_LONG).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Erro ao tentar conectar o servidor", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                //error.printStackTrace();
+            }
+        }){
+            @Override
+            protected Map<String, String > getParams(){
+                Map<String, String> params = new HashMap<String, String>();
+                /*
+                Map<String, String> params = new HashMap<String, String>();
+
+                EditText ballET = (EditText)findViewById(R.id.ball_counter);
+                params.put("b", ballET.getText().toString());
+
+                EditText strikeET = (EditText)findViewById(R.id.strike_counter);
+                params.put("s", strikeET.getText().toString());
+
+                EditText outET = (EditText)findViewById(R.id.out_counter);
+                params.put("o", outET.getText().toString());
+
+                TableLayout tableSb = (TableLayout) findViewById(R.id.scoreboardLayout);
+
+                for(int rowIndex = GUEST_ROW_INDEX; rowIndex<tableSb.getChildCount()-1; rowIndex++) {
+
+                    TableRow row = (TableRow) tableSb.getChildAt(rowIndex);
+
+                    //row.getChildCount() - 2 => last two cells : blank column and total value
+                    for (int i = 2; i < row.getChildCount() - 2; i++) {
+
+                        View v = row.getChildAt(i);
+
+                        if (v instanceof EditText) {
+                            EditText editText = (EditText)v;
+                            if(rowIndex == GUEST_ROW_INDEX){ // guest row
+                                params.put("g"+(i-1), editText.getText().toString());
+                            }else if(rowIndex == HOME_ROW_INDEX){ //home row
+                                params.put("h"+(i-1), editText.getText().toString());
+                            }
+                        }
+                    }
+                }
+                Log.d("DEBUG", params.toString());
+                */
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Content-Type","application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+        Toast.makeText(getApplicationContext(), "Atualizando dados do placar. Aguarde...", Toast.LENGTH_SHORT).show();
     }
 
     /** Called when the user taps the Send button */
