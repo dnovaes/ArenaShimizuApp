@@ -94,9 +94,7 @@ public class ScoreBoardActivity extends AppCompatActivity{
                 switch (which){
                     case DialogInterface.BUTTON_POSITIVE:
                         //Yes button clicked
-                        Intent intent = getIntent();
-                        finish();
-                        startActivity(intent);
+                        resetScoreboard();
                         break;
 
                     case DialogInterface.BUTTON_NEGATIVE:
@@ -351,13 +349,99 @@ public class ScoreBoardActivity extends AppCompatActivity{
         getScoreBoardValues();
     }
 
-    public void postData() {
+    public void resetScoreboard() {
         // Create a new HttpClient and Post Header
         String url = "https://bobito.herokuapp.com/scoreBoard/update";
 
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
 
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                // Display the first 500 characters of the response string.
+                try {
+                    JSONObject jObject = new JSONObject(response);
+                    if(!jObject.isNull("fail")) {
+                        int jsonFail = jObject.getInt("fail");
+                        Toast.makeText(getApplicationContext(), "Error: #Fail" + String.valueOf(jsonFail), Toast.LENGTH_LONG).show();
+
+                    }else if(!jObject.isNull("ok")){
+                        Intent intent = getIntent();
+                        finish();
+                        startActivity(intent);
+                    }
+                } catch (JSONException e) {
+                    // Oops
+                    Toast.makeText(getApplicationContext(), "Erro inesperado com JSON: "+e.toString(), Toast.LENGTH_LONG).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), "Erro ao tentar conectar o servidor", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show();
+                //error.printStackTrace();
+            }
+        }){
+            @Override
+            protected Map<String, String > getParams(){
+                Map<String, String> params = new HashMap<String, String>();
+                Integer value = 0;
+
+                EditText ballET = (EditText)findViewById(R.id.ball_counter);
+                params.put("b", value.toString());
+
+                EditText strikeET = (EditText)findViewById(R.id.strike_counter);
+                params.put("s", value.toString());
+
+                EditText outET = (EditText)findViewById(R.id.out_counter);
+                params.put("o", value.toString());
+
+                TableLayout tableSb = (TableLayout) findViewById(R.id.scoreboardLayout);
+
+                for(int rowIndex = GUEST_ROW_INDEX; rowIndex<tableSb.getChildCount()-1; rowIndex++) {
+
+                    TableRow row = (TableRow) tableSb.getChildAt(rowIndex);
+
+                    //row.getChildCount() - 2 => last two cells : blank column and total value
+                    for (int i = 2; i < row.getChildCount() - 2; i++) {
+
+                        View v = row.getChildAt(i);
+
+                        if (v instanceof EditText) {
+                            EditText editText = (EditText)v;
+                            if(rowIndex == GUEST_ROW_INDEX){ // guest row
+                                params.put("g"+(i-1), value.toString());
+                            }else if(rowIndex == HOME_ROW_INDEX){ //home row
+                                params.put("h"+(i-1), value.toString());
+                            }
+                        }
+                    }
+                }
+                Log.d("DEBUG", params.toString());
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Content-Type","application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
+    public void postData() {
+        // Create a new HttpClient and Post Header
+        String url = "https://bobito.herokuapp.com/scoreBoard/update";
+
+        // Instantiate the RequestQueue.
+        RequestQueue queue = Volley.newRequestQueue(this);
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
